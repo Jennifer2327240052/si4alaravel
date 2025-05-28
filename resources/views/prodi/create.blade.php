@@ -12,6 +12,7 @@
                   <!--begin::Form-->
                   <form action="{{ route('prodi.store') }}" method="POST">
                     @csrf
+                    @merhod('PUT')
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">
