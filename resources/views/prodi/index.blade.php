@@ -51,7 +51,7 @@
                             <td>{{ $item->sekretaris}}</td>
                             <td>{{ $item->fakultas->nama}}</td>
                             <td>
-                                <a href="{{route ('prodi.edit', $item->)}}" class="btn btn-warning">Edit</a>
+                                <a href="{{route ('prodi.edit', $item->id)}}" class="btn btn-warning">Edit</a>
                                 <form action="{{ route('prodi.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')

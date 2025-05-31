@@ -21,7 +21,8 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        return view('fakultas.create');
+        $fakultas = Fakultas::all();
+        return view('fakultas.create', compact('fakultas'));
     }
 
     /**
@@ -35,7 +36,10 @@ class FakultasController extends Controller
             'singkatan' => 'required|max:5',
             'dekan' => 'required',
             'wakil_dekan' => 'required',
+            'sekertaris' => 'required',
+            'fakultas_id' => 'nullable'
         ]);
+
 
         // simpan data ke tabel fakultas
         Fakultas::create($input);

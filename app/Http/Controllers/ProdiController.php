@@ -41,7 +41,7 @@ class ProdiController extends Controller
         ]);
 
         // simpan data ke tabel prodi
-        Prodi::update($input);
+        Prodi::updated($input);
 
         // redirect ke route prodi.index
         return redirect()->route('prodi.index')->with('success', 'Program studi berhasil ditambahkan.');
@@ -68,9 +68,22 @@ class ProdiController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Prodi $prodi)
-    {
-        //
-    }
+{
+    $request->validate([
+        'nama' => 'required',
+        'kode' => 'required', 
+        'singkatan' => 'required',
+        'jenjang' => 'required',
+        'akreditasi' => 'required',
+        'sekretaris' => 'required',
+        'fakultas_id' => 'required',
+    ]);
+
+    // PERBAIKAN: Instance sudah ada dari route binding
+    $prodi->update($request->all());
+
+    return redirect()->route('prodi.index')->with('success', 'Program studi berhasil diupdate');
+}
 
     /**
      * Remove the specified resource from storage.

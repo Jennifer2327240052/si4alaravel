@@ -5,64 +5,76 @@
     <!--begin::Row-->
     <div class="row">
         <div class="col-12">
-        <div class="card card-primary card-outline mb-4">
-                  <!--begin::Header-->
-                  <div class="card-header"><div class="card-title">Tambah Fakultas</div></div>
-                  <!--end::Header-->
-                  <!--begin::Form-->
-                  <form action="{{ route('fakultas.store') }}" method="POST">
+            <div class="card card-primary card-outline mb-4">
+                <!--begin::Header-->
+                <div class="card-header">
+                    <div class="card-title">Tambah Fakultas</div>
+                </div>
+                <!--end::Header-->
+                <!--begin::Form-->
+                <form action="{{ route('fakultas.store') }}" method="POST">
                     @csrf
                     <!--begin::Body-->
                     <div class="card-body">
-                      <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Fakultas</label>
-                        <input type="text" class="form-control" name="nama" value="{{ old('nama') }}">
-                        @error('nama')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                      </div>
-                      <div class="mb-3">
-                        <label for="singkatan" class="form-label">Singkatan</label>
-                        <input type="text" class="form-control" name="singkatan" value="{{ old('singkatan') }}">
-                        @error('singkatan')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                      </div>
-                      <div class="mb-3">
-                        <label for="dekan" class="form-label">Nama Dekan</label>
-                        <input type="text" class="form-control" name="dekan" value="{{ old('dekan') }}">
-                        @error('dekan')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                      </div>
-                      <div class="mb-3">
-                        <label for="wakil_dekan" class="form-label">Nama Wakil Dekan</label>
-                        <input type="text" class="form-control" name="wakil_dekan" value="{{ old('wakil_dekan') }}">
-                        @error('wakil_dekan')
                         <div class="mb-3">
-                        <label for="sekertaris" class="form-label">Nama sekertaris</label>
-                        <input type="text" class="form-control" name="sekertaris" value="{{ old('sekertaris') }}">
-                        @error('sekertaris')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                            <label for="nama" class="form-label">Nama Fakultas</label>
+                            <input type="text" class="form-control" name="nama" value="{{ old('nama') }}">
+                            @error('nama')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="mb-3">
-                        <label for="fakultas_id" class="form-label">Fakultas</label>
-                        <select class="text" class="form-control" name="fakultas_id" value="{{ old('wakil_dekan') }}">
-                        @foreach(fakultas as $item)
-                          <option value="{{$item->id}}" {{old('fakultas_id') == $item->id ? 'selected' :
-                          (prodi->fakultas_id == $item->id ? 'selected' : null)}}> {{$item->nama}}</option>
-                        @endforeach
-                      </div>
+                            <label for="singkatan" class="form-label">Singkatan</label>
+                            <input type="text" class="form-control" name="singkatan" value="{{ old('singkatan') }}">
+                            @error('singkatan')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="dekan" class="form-label">Nama Dekan</label>
+                            <input type="text" class="form-control" name="dekan" value="{{ old('dekan') }}">
+                            @error('dekan')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="wakil_dekan" class="form-label">Nama Wakil Dekan</label>
+                            <input type="text" class="form-control" name="wakil_dekan" value="{{ old('wakil_dekan') }}">
+                            @error('wakil_dekan')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="sekertaris" class="form-label">Nama Sekretaris</label>
+                            <input type="text" class="form-control" name="sekertaris" value="{{ old('sekertaris') }}">
+                            @error('sekertaris')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="fakultas_id" class="form-label">Fakultas</label>
+                            <select class="form-control" name="fakultas_id">
+                                <option value="">-- Pilih Fakultas --</option>
+                                @foreach($fakultas as $item)
+                                    <option value="{{ $item->id }}" {{ old('fakultas_id') == $item->id ? 'selected' : '' }}>
+                                        {{ $item->nama }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('fakultas_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <!--end::Body-->
                     <!--begin::Footer-->
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary" fdprocessedid="s51n9k">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     <!--end::Footer-->
-                  </form>
-                  <!--end::Form-->
-                </div>
+                </form>
+                <!--end::Form-->
+            </div>
         </div>
     </div>
     <!--end::Row-->
