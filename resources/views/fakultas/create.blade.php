@@ -39,8 +39,19 @@
                         <label for="wakil_dekan" class="form-label">Nama Wakil Dekan</label>
                         <input type="text" class="form-control" name="wakil_dekan" value="{{ old('wakil_dekan') }}">
                         @error('wakil_dekan')
+                        <div class="mb-3">
+                        <label for="sekertaris" class="form-label">Nama sekertaris</label>
+                        <input type="text" class="form-control" name="sekertaris" value="{{ old('sekertaris') }}">
+                        @error('sekertaris')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
+                        <div class="mb-3">
+                        <label for="fakultas_id" class="form-label">Fakultas</label>
+                        <select class="text" class="form-control" name="fakultas_id" value="{{ old('wakil_dekan') }}">
+                        @foreach(fakultas as $item)
+                          <option value="{{$item->id}}" {{old('fakultas_id') == $item->id ? 'selected' :
+                          (prodi->fakultas_id == $item->id ? 'selected' : null)}}> {{$item->nama}}</option>
+                        @endforeach
                       </div>
                     </div>
                     <!--end::Body-->
