@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section
+@section('content')
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -82,7 +82,7 @@ Highcharts.chart('container', {
             'Source: Universitas MDP 2025'
     },
     xAxis: {
-        categories: [@foreach($mahasiswaprodis as $item) '{{ $item->jumlah }}', @endforeach],
+        categories: [@foreach ($mahasiswaprodis as $item) '{{ $item->jumlah }}', @endforeach],
         crosshair: true,
         accessibility: {
             description: 'Program Studi'

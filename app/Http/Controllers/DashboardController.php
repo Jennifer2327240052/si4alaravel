@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-
+use Illuminate\Support\Facades\DB; 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $mahasiwaprodi = DB::select('
-            select prodi.nama, count(*) as jumlah From mahasiswa
-            JOIN prodi ON mahasiswa.
-            prodi_id = prodi_id
-            GROUP BY prodi.nama'
-        );
+        $mahasiswaProdi = DB::table('mahasiswa AS m') 
+            ->join('prodi AS p', 'm.prodi_id', '=', 'p.id') 
+            ->select('p.nama', DB::raw('COUNT(m.id) AS jumlah')) 
+            ->groupBy('p.nama') 
+            ->get(); 
 
-        return view('dashboard.index', compact('mahasiswaprodi'));
+        return view('dashboard.index', compact('mahasiswaProdi'));
     }
 }
-
