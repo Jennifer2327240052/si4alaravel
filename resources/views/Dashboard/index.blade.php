@@ -1,4 +1,6 @@
 @extends('layout.main')
+@section('title', 'Dashboard')
+
 @section('content')
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -78,12 +80,14 @@ Highcharts.chart('container', {
         text: 'Jumlah mahasiswa berdasarkan program studi'
     },
     subtitle: {
-        text:
-            'Source: Universitas MDP 2025'
+        text: 'Source: Universitas MDP 2025'
     },
     xAxis: {
-        categories: [@foreach ($mahasiswaprodis as $item)
-        '{{ $item->jumlah }}', @endforeach],
+        categories: [
+            @foreach ($mahasiswaprodis as $item)
+                '{{ $item->nama_prodi }}',
+            @endforeach
+        ],
         crosshair: true,
         accessibility: {
             description: 'Program Studi'
@@ -107,11 +111,12 @@ Highcharts.chart('container', {
     series: [
         {
             name: 'Mahasiswa',
-            data: {
-                @foreach($mahasiswass as $item) {{ $item->jumlah }}, @endforeach
-            }
+            data: [
+                @foreach($mahasiswaprodis as $item)
+                    {{ $item->jumlah }},
+                @endforeach
+            ]
         },
     ]
 });
-
 </script>

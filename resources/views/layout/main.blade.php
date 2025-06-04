@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -219,7 +218,7 @@
                     alt="User Image"
                   />
                   <p>
-                    {{ Auth::user()->name }}- Dosen/Admin
+                    {{ Auth::user()->name }}- {{strtoupper(Auth::user
                     <small>Member since Nov. 2023</small>
                   </p>
                 </li>
@@ -339,6 +338,12 @@
                 <a class='nav-link' href='{{ url('mahasiswa') }}'>
                   <i class="nav-icon bi bi-palette"></i>
                   <p>Mahasiswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class='nav-link' href='{{ url('sesi') }}'>
+                  <i class="nav-icon bi bi-palette"></i>
+                  <p>Sesi</p>
                 </a>
               </li>
 
