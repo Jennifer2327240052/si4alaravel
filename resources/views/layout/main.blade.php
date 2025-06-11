@@ -218,7 +218,7 @@
                     alt="User Image"
                   />
                   <p>
-                    {{ Auth::user()->name }}- {{strtoupper(Auth::user
+                    {{ Auth::user()->name }} - {{ strtoupper(Auth::user()->name) }}
                     <small>Member since Nov. 2023</small>
                   </p>
                 </li>
@@ -268,6 +268,7 @@
               src="{{ asset('assets/img/AdminLTELogo.png') }}"
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
+              style="width: 80px; height: auto; display: block; margin: 0 auto;"
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
@@ -469,14 +470,15 @@
     });
 </script>
 
-    @session('success')
-    <script>
-      Swal.fire({
-        title: "Good Job!",
-        text: "{{ session('success') }}",
-        icon: "Success"
-      });
-    </script>
+@if (session('success'))
+<script>
+  Swal.fire({
+    title: "Good Job!",
+    text: "{{ session('success') }}",
+    icon: "success"
+  });
+</script>
+@endif
     <!--end::Script-->
   </body>
   <!--end::Body-->
